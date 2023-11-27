@@ -1,3 +1,5 @@
+import csv ,os
+
 produto_existe = lambda codigo, produtos: any(produto["codigo"] == codigo for produto in produtos)
 
 def inserir_produto(produtos):
@@ -28,6 +30,7 @@ def inserir_produto(produtos):
 
     produto = {"codigo": codigo, "nome": nome, "preco": preco}
     produtos.append(produto)
+    salvar_produtos(produtos)
     print("Produto adicionado com sucesso!")
     input("Pressione <Enter> para continuar!")
 
@@ -39,6 +42,7 @@ def excluir_produto(produtos):
             produtos.remove(produto)
             print("Produto excluído com sucesso!")
             input("Pressione <Enter> para continuar!")
+            salvar_produtos(produtos)
             return
     print("Produto não encontrado.")
     input("Pressione <Enter> para continuar!")
@@ -67,6 +71,7 @@ def consultar_preco(produtos):
 def listar_produtos(produtos):
     if not produtos:
         print("Nenhum produto cadastrado.")
+        input("Pressione <Enter> para continuar!")
         return
 
     print("Lista de produtos:")
@@ -75,5 +80,27 @@ def listar_produtos(produtos):
 
         if i % 10 == 0:
             input("Pressione <Enter> para continuar!")
+            os.system("cls" if os.name == "nt" else "clear")
+
             
     input("Pressione <Enter> para continuar!")
+    
+    
+def salvar_produtos(produtos):
+    with open("BancoDeDados/produtos.csv", "w", newline="") as file:
+        fieldnames = ["codigo", "nome", "preco"]
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerows(produtos)
+        
+def carregar_produtos():
+    try:
+        with open("BancoDeDados/produtos.csv", "r", newline="") as file:
+            reader = csv.DictReader(file)
+            produtos = list(reader)
+            for produto in produtos:
+                produto['preco'] = float(produto['preco'])
+            return produtos
+    except FileNotFoundError:
+        return []
