@@ -33,7 +33,7 @@ def consultar_preco(lista_produtos):
     print("Produto não encontrado.")
 
 # Função principal
-def main():
+def menu_estoque():
     lista_produtos = []
     
     while True:
@@ -58,6 +58,3 @@ def main():
             break
         else:
             print("Opção inválida. Tente novamente.")
-
-if __name__ == "__main__":
-    main()
