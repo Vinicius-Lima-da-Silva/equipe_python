@@ -17,3 +17,9 @@ def excluir_produto(lista_produtos):
     else:
         print("Produto não encontrado.")
 
+def listar_produtos(lista_produtos):
+    if lista_produtos:
+        for i, produto in enumerate(lista_produtos, start=1):
+            print(f"{i}. Código: {produto['codigo']} - Nome: {produto['nome']} - Preço: R${produto['preco']:.2f}")
+    else:
+        print("Nenhum produto cadastrado.")
