@@ -50,13 +50,20 @@ def reajusta_dez_porcento(empregados):  # Corrigido para 'reajusta_dez_porcento'
 def menu():
     print("1. Listar empregados")
     print("2. Reajustar salários")
-    print("3. Salvar e sair")
+    print("3. Cadastrar empregado")
+    print("4. Salvar e sair")
     opcao = int(input("Digite a opção desejada: "))
-    while opcao != 3:
+    while opcao != 4:
         if opcao == 1:
             listar_empregados()
         elif opcao == 2:
             reajusta_dez_porcento(empregados)
+        elif opcao == 3:
+            cadastrar_empregado()
+            break
+        elif opcao == 4:
+            salvar_arquivo()
+            break
         else:
             print("Opção inválida!")
         print("1. Listar empregados")
