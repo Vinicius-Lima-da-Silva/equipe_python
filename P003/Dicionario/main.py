@@ -21,3 +21,11 @@ def salvar_arquivo():
     with open("funcionarios.txt", "w") as arquivo:
         for empregado in empregados:
             arquivo.write(f"{empregado['nome']},{empregado['sobrenome']},{empregado['ano_nascimento']},{empregado['RG']},{empregado['ano_admissao']},{empregado['salario']}\n")
+
+def listar_empregados():
+    for i, empregado in enumerate(empregados, start=1):
+        print(f"{i}. {empregado['nome']} {empregado['sobrenome']}")
+
+def Reajusta_dez_porcento(empregados):
+     for empregado in empregados:
+         empregado['salario'] *= 1.1
