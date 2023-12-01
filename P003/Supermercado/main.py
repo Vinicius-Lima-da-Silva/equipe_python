@@ -1,8 +1,5 @@
-from estoque import Estoque
-
+from estoque import menu_estoque
 def main():
-    estoque = carregar_estoque()
-    estoque.menu()
-
+    main()
 if __name__ == "__main__":
     main()

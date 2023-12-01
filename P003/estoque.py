@@ -1,3 +1,4 @@
+# Função para inserir um novo produto
 def inserir_produto(lista_produtos):
     codigo = input("Digite o código do produto (13 caracteres): ")
     nome = input("Digite o nome do produto: ").capitalize()
@@ -7,32 +8,31 @@ def inserir_produto(lista_produtos):
     lista_produtos.append(produto)
     print("Produto inserido com sucesso!")
 
+# Função para excluir um produto cadastrado
 def excluir_produto(lista_produtos):
     codigo = input("Digite o código do produto que deseja excluir: ")
-    produtos_encontrados = [produto for produto in lista_produtos if produto['codigo'] == codigo]
-    
-    if produtos_encontrados:
-        lista_produtos.remove(produtos_encontrados[0])
-        print("Produto removido com sucesso!")
-    else:
-        print("Produto não encontrado.")
+    for produto in lista_produtos:
+        if produto['codigo'] == codigo:
+            lista_produtos.remove(produto)
+            print("Produto removido com sucesso!")
+            return
+    print("Produto não encontrado.")
 
+# Função para listar todos os produtos com seus respectivos códigos e preços
 def listar_produtos(lista_produtos):
-    if lista_produtos:
-        for i, produto in enumerate(lista_produtos, start=1):
-            print(f"{i}. Código: {produto['codigo']} - Nome: {produto['nome']} - Preço: R${produto['preco']:.2f}")
-    else:
-        print("Nenhum produto cadastrado.")
+    for i, produto in enumerate(lista_produtos, start=1):
+        print(f"{i}. Código: {produto['codigo']} - Nome: {produto['nome']} - Preço: R${produto['preco']:.2f}")
 
+# Função para consultar o preço de um produto através de seu código
 def consultar_preco(lista_produtos):
     codigo = input("Digite o código do produto que deseja consultar o preço: ")
-    produtos_encontrados = [produto for produto in lista_produtos if produto['codigo'] == codigo]
-    
-    if produtos_encontrados:
-        print(f"O preço do produto '{produtos_encontrados[0]['nome']}' é R${produtos_encontrados[0]['preco']:.2f}")
-    else:
-        print("Produto não encontrado.")
+    for produto in lista_produtos:
+        if produto['codigo'] == codigo:
+            print(f"O preço do produto '{produto['nome']}' é R${produto['preco']:.2f}")
+            return
+    print("Produto não encontrado.")
 
+# Função principal
 def main():
     lista_produtos = []
     
