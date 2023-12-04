@@ -220,12 +220,17 @@ class ListaSalarios(AnaliseDados):
         self.__lista = []        
 
     def entradaDeDados(self):
-        '''
-        Este método pergunta ao usuários quantos
-        elementos vão existir na lista e depois
-        solicita a digitação de cada um deles
-        '''
-        pass
+
+        while True:
+            qtdElementos = int(input("Digite o numero de elementos da lista de salários : "))
+            if qtdElementos <= 0:
+                print("A Lista precisa ter tamanho mínimo de 1")
+            else:
+                break       
+                
+        for i in range(1,qtdElementos+1):
+            salario = float(input(f"Digite o {i} salário : "))
+            self.__lista.append(salario)
 
     def mostraMediana(self):
         '''
