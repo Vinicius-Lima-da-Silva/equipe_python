@@ -356,7 +356,7 @@ class ListaIdades(AnaliseDados):
 
     def __iter__(self):
         return iter(self.__lista)
-
+    
 def main():
     nomes = ListaNomes()
     datas = ListaDatas()
@@ -389,6 +389,8 @@ def main():
     for data in list(filter(lambda x : x.ano < 2019 , datas)):
         data.dia = 1
     print(datas)
+    
+    
 
 
     print("Fim do teste!!!")
