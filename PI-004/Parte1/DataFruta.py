@@ -204,7 +204,7 @@ class ListaDatas(AnaliseDados):
         tamanhoDaLista= len(self.__lista)
         if tamanhoDaLista > 0:
             listaTemporaria = sorted(self.__lista)
-            print(f"Maior Data é : {listaTemporaria[0]}")
+            print(f"Maior Data é : {listaTemporaria[tamanhoDaLista-1]}")
         else:
             print("Lista está vazia!")
     
@@ -229,27 +229,41 @@ class ListaSalarios(AnaliseDados):
                 break       
                 
         for i in range(1,qtdElementos+1):
-            salario = float(input(f"Digite o {i} salário : "))
-            self.__lista.append(salario)
+            while True:
+                salario = float(input(f"Digite o {i} salário : "))
+                if salario <= 0.0:
+                    print("O salário deve ser maior que 0!")
+                else:
+                    self.__lista.append(salario)
+                    break
 
     def mostraMediana(self):
-        '''
-        Este método ordena a lista e mostra o
-        elemento que está na metade da lista
-        '''
-        pass    
+        tamanhoDaLista= len(self.__lista)
+        listaTemporaria = sorted(self.__lista)
+        if tamanhoDaLista%2==0:
+            indiceMenor = int(tamanhoDaLista / 2 - 1)
+            indiceMaior =  indiceMenor +1
+            mediana = (listaTemporaria[indiceMenor] + listaTemporaria[indiceMaior])/2
+            print(f"Mediana é : {mediana}")
+        else:
+            indice = int(tamanhoDaLista / 2)
+            print(f"Mediana é : {listaTemporaria[indice]}")
 
     def mostraMenor(self):
-        '''
-        Este método retorna o menos elemento da lista
-        '''
-        pass
+        tamanhoDaLista= len(self.__lista)
+        if tamanhoDaLista > 0:
+            listaTemporaria = sorted(self.__lista)
+            print(f"Menor salário é : {listaTemporaria[0]}")
+        else:
+            print("Lista está vazia!")
 
     def mostraMaior(self):
-        '''
-        Este método retorna o maior elemento da lista
-        '''
-        pass
+        tamanhoDaLista= len(self.__lista)
+        if tamanhoDaLista > 0:
+            listaTemporaria = sorted(self.__lista)
+            print(f"Maior salário é : {listaTemporaria[tamanhoDaLista-1]}")
+        else:
+            print("Lista está vazia!")
     
     def __str__(self):
         for i in self.__lista:
@@ -262,31 +276,49 @@ class ListaIdades(AnaliseDados):
         self.__lista = []        
     
     def entradaDeDados(self):
-        '''
-        Este método pergunta ao usuários quantos
-        elementos vão existir na lista e depois
-        solicita a digitação de cada um deles
-        '''
-        pass
+        while True:
+            qtdElementos = int(input("Digite o numero de elementos da lista de idades : "))
+            if qtdElementos <= 0:
+                print("A Lista precisa ter tamanho mínimo de 1")
+            else:
+                break       
+                
+        for i in range(1,qtdElementos+1):
+            while True:
+                idade = int(input(f"Digite a {i} idade : "))
+                if idade <= 0:
+                    print("A idade deve ser maior que 0!")
+                else:
+                    self.__lista.append(idade)
+                    break
     
     def mostraMediana(self):
-        '''
-        Este método ordena a lista e mostra o
-        elemento que está na metade da lista
-        '''
-        pass    
+        tamanhoDaLista= len(self.__lista)
+        listaTemporaria = sorted(self.__lista)
+        if tamanhoDaLista%2==0:
+            indiceMenor = int(tamanhoDaLista / 2 - 1)
+            indiceMaior =  indiceMenor +1
+            mediana = (listaTemporaria[indiceMenor] + listaTemporaria[indiceMaior])/2
+            print(f"Mediana é : {mediana}")
+        else:
+            indice = int(tamanhoDaLista / 2)
+            print(f"Mediana é : {listaTemporaria[indice]}")
     
     def mostraMenor(self):
-        '''
-        Este método retorna o menos elemento da lista
-        '''
-        pass
+        tamanhoDaLista= len(self.__lista)
+        if tamanhoDaLista > 0:
+            listaTemporaria = sorted(self.__lista)
+            print(f"Menor idade é : {listaTemporaria[0]}")
+        else:
+            print("Lista está vazia!")
     
     def mostraMaior(self):
-        '''
-        Este método retorna o maior elemento da lista
-        '''
-        pass
+        tamanhoDaLista= len(self.__lista)
+        if tamanhoDaLista > 0:
+            listaTemporaria = sorted(self.__lista)
+            print(f"Maior salário é : {listaTemporaria[tamanhoDaLista-1]}")
+        else:
+            print("Lista está vazia!")
 
     def __str__(self):
         for i in self.__lista:
