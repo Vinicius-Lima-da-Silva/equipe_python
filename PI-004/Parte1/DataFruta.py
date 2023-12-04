@@ -204,7 +204,7 @@ class ListaDatas(AnaliseDados):
         tamanhoDaLista= len(self.__lista)
         if tamanhoDaLista > 0:
             listaTemporaria = sorted(self.__lista)
-            print(f"Maior Data é : {listaTemporaria[0]}")
+            print(f"Maior Data é : {listaTemporaria[tamanhoDaLista-1]}")
         else:
             print("Lista está vazia!")
     
@@ -334,6 +334,7 @@ def main():
     idades = ListaIdades()
 
     listaListas = [nomes, datas, salarios, idades]
+
 
     for lista in listaListas:
         lista.entradaDeDados()
