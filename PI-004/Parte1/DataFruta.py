@@ -225,6 +225,15 @@ class ListaDatas(AnaliseDados):
         for data in listaOrdenada:
             print(data)
     
+    def modificar_datas(self):
+        def modificar_data(data):
+            if data.ano < 2019:
+                data.dia = 1
+            return data
+
+        datas_anteriores_2019 = filter(lambda x: x.ano < 2019, self.__lista)
+        self.__lista = list(map(modificar_data, datas_anteriores_2019))
+    
     def __str__(self):
         for i in self.__lista:
             print(i)
@@ -388,6 +397,11 @@ def main():
     salarios.reajustar_salarios(0.10)
     custo_total = salarios.calcular_custo_folha()
     print(f"Custo da folha de pagamento com salários reajustados: {custo_total}")
+
+    datas.modificar_datas()
+
+    # Exibindo as datas após a modificação
+    datas.listarEmOrdem()
 
 
     
