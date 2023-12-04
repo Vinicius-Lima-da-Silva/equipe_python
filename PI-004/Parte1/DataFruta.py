@@ -159,6 +159,7 @@ class ListaNomes(AnaliseDados):
         print("Lista em ordem:")
         for nome in listaOrdenada:
             print(nome)
+        return listaOrdenada
 
     def __str__(self):
         for i in self.__lista:
@@ -222,7 +223,7 @@ class ListaDatas(AnaliseDados):
         listaOrdenada = sorted(self.__lista)
         print("Lista em ordem:")
         for data in listaOrdenada:
-            print(data)    
+            print(data)
     
     def __str__(self):
         for i in self.__lista:
@@ -286,6 +287,7 @@ class ListaSalarios(AnaliseDados):
         print("Lista em ordem:")
         for salario in listaOrdenada:
             print(salario)
+        return listaOrdenada
         
     def __str__(self):
         for i in self.__lista:
@@ -370,6 +372,12 @@ def main():
         lista.mostraMaior()
         lista.listarEmOrdem()
         print("___________________")
+
+    for nome, salario in zip(nomes.listarEmOrdem(), salarios.listarEmOrdem()):
+        print(f"Nome: {nome}, Salário: {salario}")
+
+
+    
 
     print("Fim do teste!!!")
 
