@@ -98,6 +98,10 @@ class AnaliseDados(ABC):
     def mostraMaior(self):
         pass
 
+    @abstractmethod
+    def listarEmOrdem(self):
+        pass
+
 class ListaNomes(AnaliseDados):
     
     def __init__(self):
