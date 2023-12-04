@@ -153,6 +153,12 @@ class ListaNomes(AnaliseDados):
             print(f"Alfabeticamente o maior é : {listaTemporaria[tamanhoDaLista-1]}")
         else:
             print("Lista está vazia!")
+      
+    def listarEmOrdem(self):
+        listaOrdenada = sorted(self.__lista)
+        print("Lista em ordem:")
+        for nome in listaOrdenada:
+            print(nome)
 
     def __str__(self):
         for i in self.__lista:
