@@ -288,6 +288,15 @@ class ListaSalarios(AnaliseDados):
         for salario in listaOrdenada:
             print(salario)
         return listaOrdenada
+    
+    def reajustar_salarios(self, percentual):
+        def aumentar_salario(salario):
+            return salario * (1 + percentual)
+
+        self.__lista = list(map(aumentar_salario, self.__lista))
+        
+    def calcular_custo_folha(self):
+        return sum(self.__lista)
         
     def __str__(self):
         for i in self.__lista:
@@ -375,6 +384,10 @@ def main():
 
     for nome, salario in zip(nomes.listarEmOrdem(), salarios.listarEmOrdem()):
         print(f"Nome: {nome}, Salário: {salario}")
+
+    salarios.reajustar_salarios(0.10)
+    custo_total = salarios.calcular_custo_folha()
+    print(f"Custo da folha de pagamento com salários reajustados: {custo_total}")
 
 
     
