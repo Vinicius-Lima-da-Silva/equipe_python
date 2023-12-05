@@ -114,7 +114,11 @@ class ListaNomes(AnaliseDados):
     def entradaDeDados(self):
         
         while True:
-            qtdElementos = int(input("Digite o numero de elementos da lista de nomes : "))
+            try:
+                qtdElementos = int(input("Digite o numero de elementos da lista de nomes : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
+                
             if qtdElementos <= 0:
                 print("A Lista precisa ter tamanho mínimo de 1")
             else:
@@ -122,7 +126,10 @@ class ListaNomes(AnaliseDados):
             
         for i in range(1,qtdElementos+1):
             while True: 
-                valor = input(f"Digite o {i} elemento : ")
+                try:
+                    valor = input(f"Digite o {i} elemento : ")
+                except Exception as ex:
+                    print(f"Erro : {ex}")
                 if valor=="":
                     print("Digite um nome válido!")
                     continue
@@ -187,7 +194,10 @@ class ListaDatas(AnaliseDados):
     def entradaDeDados(self):
         
         while True:
-            qtdElementos = int(input("Digite o numero de elementos da lista de datas : "))
+            try:
+                qtdElementos = int(input("Digite o numero de elementos da lista de datas : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
             if qtdElementos <= 0:
                 print("A Lista precisa ter tamanho mínimo de 1")
             else:
@@ -208,13 +218,15 @@ class ListaDatas(AnaliseDados):
     
     def adicionar(self):
         while True: 
-            dia = int(input(f"Digite o o dia : "))
-            mes = int(input(f"Digite o o mês : "))
-            ano = int(input(f"Digite o o ano : "))
             try:
+                dia = int(input(f"Digite o o dia : "))
+                mes = int(input(f"Digite o o mês : "))
+                ano = int(input(f"Digite o o ano : "))
                 dataNova = Data(dia,mes,ano)
             except ValueError as erro:
                 print(f"Erro : {erro}")
+            except Exception as ex:
+                print(f"Erro : {ex}")
             else:
                 self.__lista.append(dataNova)
                 break
@@ -274,7 +286,10 @@ class ListaSalarios(AnaliseDados):
 
     def entradaDeDados(self):
         while True:
-            qtdElementos = int(input("Digite o numero de elementos da lista de salários : "))
+            try:
+                qtdElementos = int(input("Digite o numero de elementos da lista de salários : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
             if qtdElementos <= 0:
                 print("A Lista precisa ter tamanho mínimo de 1")
             else:
@@ -291,7 +306,10 @@ class ListaSalarios(AnaliseDados):
     
     def adicionar(self):
         while True:
-            salario = float(input(f"Digite o salário : "))
+            try:
+                salario = float(input(f"Digite o salário : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
             if salario <= 0.0:
                 print("O salário deve ser maior que 0!")
             else:
@@ -351,7 +369,11 @@ class ListaIdades(AnaliseDados):
     
     def entradaDeDados(self):
         while True:
-            qtdElementos = int(input("Digite o numero de elementos da lista de idades : "))
+            try:
+                qtdElementos = int(input("Digite o numero de elementos da lista de idades : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
+                
             if qtdElementos <= 0:
                 print("A Lista precisa ter tamanho mínimo de 1")
             else:
@@ -368,7 +390,11 @@ class ListaIdades(AnaliseDados):
                 
     def adicionar(self):
         while True:
-            idade = int(input(f"Digite a idade : "))
+            try:
+                idade = int(input(f"Digite a idade : "))
+            except Exception as ex:
+                print(f"Erro : {ex}")
+                
             if idade <= 0:
                 print("A idade deve ser maior que 0!")
             else:
@@ -460,6 +486,7 @@ def main():
             print("Opção inválida. Tente novamente.")
 
     
+
     print("Fim do teste!!!")
 
 if __name__ == "__main__":
